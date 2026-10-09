@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>buyevich.works — coming soon</title>
+  <meta name="description" content="buyevich.works — the site is under construction and will be available soon. Strona w budowie, wkrótce dostępna.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="buyevich.works">
+  <meta property="og:description" content="Coming soon · Wkrótce">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://buyevich.works/">
+  <link rel="canonical" href="https://buyevich.works/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --fg: #16150f;
+      --muted: #6b675c;
+      --line: #d9d5c9;
+      --accent: #c2410c;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111110;
+        --fg: #edebe4;
+        --muted: #8f8b80;
+        --line: #2b2a26;
+        --accent: #fb923c;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100svh;
+    }
+
+    header, footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px clamp(16px, 5vw, 48px);
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .brand { color: var(--fg); letter-spacing: 0.02em; }
+    .brand b { color: var(--accent); font-weight: inherit; }
+
+    .lang { display: flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
+    .lang button {
+      font: inherit;
+      color: var(--muted);
+      background: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .lang button:hover { color: var(--fg); }
+    .lang button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+    .lang button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px clamp(16px, 5vw, 48px);
+      max-width: 960px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 50% { opacity: 0.25; } }
+    @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: clamp(40px, 9vw, 104px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      font-weight: 650;
+      text-wrap: balance;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 34em;
+      font-size: clamp(17px, 2.2vw, 21px);
+      line-height: 1.5;
+      color: var(--muted);
+      text-wrap: pretty;
+    }
+
+    /* show only the active language */
+    html[lang="en"] [lang="pl"],
+    html[lang="pl"] [lang="en"] { display: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">buyevich<b>.</b>works</span>
+    <div class="lang" role="group" aria-label="Language / Język">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="pl" aria-pressed="false">PL</button>
+    </div>
+  </header>
+
+  <main>
+    <p class="status"><span class="dot" aria-hidden="true"></span>
+      <span lang="en">Under construction</span>
+      <span lang="pl">Strona w budowie</span>
+    </p>
+
+    <h1>
+      <span lang="en">Coming soon.</span>
+      <span lang="pl">Już wkrótce.</span>
+    </h1>
+
+    <p class="lead">
+      <span lang="en">This site is being built right now and will be up and running shortly. Please check back soon.</span>
+      <span lang="pl">Strona jest właśnie przygotowywana i wkrótce zacznie działać. Zapraszamy ponownie niebawem.</span>
+    </p>
+  </main>
+
+  <footer>
+    <span>© <span id="year">2026</span> buyevich.works</span>
+  </footer>
+
+  <script>
+    (function () {
+      var titles = {
+        en: 'buyevich.works — coming soon',
+        pl: 'buyevich.works — już wkrótce'
+      };
+      var buttons = document.querySelectorAll('.lang button');
+
+      function setLang(lang, remember) {
+        if (!titles[lang]) lang = 'en';
+        document.documentElement.lang = lang;
+        document.title = titles[lang];
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+        });
+        if (remember) {
+          try { localStorage.setItem('lang', lang); } catch (e) {}
+        }
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem('lang'); } catch (e) {}
+      var fromUrl = new URLSearchParams(location.search).get('lang');
+      var fromBrowser = (navigator.language || '').toLowerCase().indexOf('pl') === 0 ? 'pl' : 'en';
+      setLang(fromUrl || saved || fromBrowser, false);
+
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { setLang(b.dataset.lang, true); });
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
