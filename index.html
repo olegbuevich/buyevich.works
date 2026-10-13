@@ -3,15 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>buyevich.works — coming soon</title>
-  <meta name="description" content="buyevich.works — the site is under construction and will be available soon. Strona w budowie, wkrótce dostępna.">
+  <title>Aleh Buyevich - DevOps engineer</title>
+  <meta name="description" content="Aleh Buyevich - DevOps engineer. CI/CD, Kubernetes, AWS, Infrastructure as Code, monitoring and reliability.">
   <meta name="color-scheme" content="light dark">
-  <meta property="og:title" content="buyevich.works">
-  <meta property="og:description" content="Coming soon · Wkrótce">
+  <meta property="og:title" content="Aleh Buyevich - DevOps engineer">
+  <meta property="og:description" content="CI/CD · Kubernetes · AWS · IaC · Monitoring · Security">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://buyevich.works/">
   <link rel="canonical" href="https://buyevich.works/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aleh Buyevich",
+    "jobTitle": "DevOps engineer",
+    "url": "https://buyevich.works/"
+  }
+  </script>
   <style>
     :root {
       --bg: #f6f4ef;
@@ -77,46 +86,73 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 32px clamp(16px, 5vw, 48px);
-      max-width: 960px;
+      padding: 24px clamp(16px, 5vw, 48px);
+      max-width: 1100px;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .name {
+      margin: 0 0 8px;
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin: 0 0 24px;
+      font-size: 14px;
+      letter-spacing: 0.02em;
     }
-    .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 50% { opacity: 0.25; } }
-    @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
 
     h1 {
-      margin: 0 0 24px;
-      font-size: clamp(40px, 9vw, 104px);
-      line-height: 0.98;
+      margin: 0 0 20px;
+      font-size: clamp(36px, 7vw, 64px);
+      line-height: 1;
       letter-spacing: -0.04em;
       font-weight: 650;
       text-wrap: balance;
     }
 
     .lead {
-      margin: 0;
+      margin: 0 0 24px;
       max-width: 34em;
-      font-size: clamp(17px, 2.2vw, 21px);
+      font-size: clamp(17px, 2.2vw, 20px);
       line-height: 1.5;
       color: var(--muted);
       text-wrap: pretty;
     }
+
+    .services {
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .services li {
+      display: grid;
+      grid-template-columns: 2.5em 17em 1fr;
+      gap: 0 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .services .n { color: var(--accent); }
+    .services .d { color: var(--muted); }
+    @media (max-width: 640px) {
+      .services li { grid-template-columns: 2.5em 1fr; }
+      .services .d { grid-column: 2; }
+    }
+
+    .cta {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 14px;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--fg);
+      border-radius: 999px;
+      padding: 12px 20px;
+    }
+    .cta:hover { background: var(--accent); }
+    .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
     /* show only the active language */
     html[lang="en"] [lang="pl"],
@@ -133,20 +169,70 @@
   </header>
 
   <main>
-    <p class="status"><span class="dot" aria-hidden="true"></span>
-      <span lang="en">Under construction</span>
-      <span lang="pl">Strona w budowie</span>
-    </p>
+    <p class="name">Aleh Buyevich</p>
 
     <h1>
-      <span lang="en">Coming soon.</span>
-      <span lang="pl">Już wkrótce.</span>
+      <span lang="en">DevOps engineer.</span>
+      <span lang="pl">Inżynier DevOps.</span>
     </h1>
 
     <p class="lead">
-      <span lang="en">This site is being built right now and will be up and running shortly. Please check back soon.</span>
-      <span lang="pl">Strona jest właśnie przygotowywana i wkrótce zacznie działać. Zapraszamy ponownie niebawem.</span>
+      <span lang="en">I build and run infrastructure on AWS - from the first pipeline to production that stays up.</span>
+      <span lang="pl">Buduję i utrzymuję infrastrukturę na AWS - od pierwszego pipeline’u po stabilną produkcję.</span>
     </p>
+
+    <ul class="services">
+      <li>
+        <span class="n">01</span>
+        <span>CI/CD &amp; automation</span>
+        <span class="d">
+          <span lang="en">a good release needs no planned downtime</span>
+          <span lang="pl">dobre wdrożenie nie wymaga planowanego przestoju</span>
+        </span>
+      </li>
+      <li>
+        <span class="n">02</span>
+        <span>Kubernetes &amp; containers</span>
+        <span class="d">
+          <span lang="en">EKS and self-hosted, from IoT to multi-cluster</span>
+          <span lang="pl">EKS i self-hosted, od IoT po multi-cluster</span>
+        </span>
+      </li>
+      <li>
+        <span class="n">03</span>
+        <span>AWS</span>
+        <span class="d">
+          <span lang="en">architecture, migrations, cost</span>
+          <span lang="pl">architektura, migracje, koszty</span>
+        </span>
+      </li>
+      <li>
+        <span class="n">04</span>
+        <span>Infrastructure as Code</span>
+        <span class="d">
+          <span lang="en">IaC first, immutable infrastructure; manual changes are the quickest way to downtime</span>
+          <span lang="pl">IaC first, immutable infrastructure; ręczne zmiany to najkrótsza droga do przestoju</span>
+        </span>
+      </li>
+      <li>
+        <span class="n">05</span>
+        <span>Monitoring &amp; reliability</span>
+        <span class="d">
+          <span lang="en">logs, metrics, alerts that matter - no noise</span>
+          <span lang="pl">logi, metryki, istotne alerty - bez szumu</span>
+        </span>
+      </li>
+      <li>
+        <span class="n">06</span>
+        <span>Security</span>
+        <span class="d">
+          <span lang="en">secure by default, least privilege</span>
+          <span lang="pl">bezpieczeństwo domyślnie, minimum uprawnień</span>
+        </span>
+      </li>
+    </ul>
+
+    <a class="cta" id="li" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">→</span></a>
   </main>
 
   <footer>
@@ -156,8 +242,8 @@
   <script>
     (function () {
       var titles = {
-        en: 'buyevich.works — coming soon',
-        pl: 'buyevich.works — już wkrótce'
+        en: 'Aleh Buyevich - DevOps engineer',
+        pl: 'Aleh Buyevich - inżynier DevOps'
       };
       var buttons = document.querySelectorAll('.lang button');
 
@@ -184,6 +270,10 @@
       });
 
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // profile link is assembled here so the address is not in the page source
+      document.getElementById('li').href =
+        ['https://www.', 'linked', 'in.com', '/in/', 'aleh-b', '-6aa5', '65144'].join('');
     })();
   </script>
 </body>
